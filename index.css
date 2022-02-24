@@ -14,7 +14,7 @@
     align-items: center;
     /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%); */
     background: url('./assets/labBackground1.png');
-    background-size: 100%;
+    background-size: 250%;
     background-position: center;
     overflow: hidden;
   
@@ -34,6 +34,8 @@
 
   html{
     font-size:7.11vh;
+    font-family: Roboto;
+
   }
 
 
@@ -76,6 +78,7 @@
 .stripCaption{
     position: absolute;
     font-size: 0.7rem;
+    font-family: Roboto;
     top:80%;
     width:10%;
     cursor: pointer;
@@ -162,3 +165,14 @@
     top:5%;
     cursor: pointer;
   }
+
+/* ------------------ MEDIA QUERIES ------------------ */
+
+@media only screen and (max-aspect-ratio:16/9 ) {
+    
+}
+@media only screen and (min-aspect-ratio:16/9 ) {
+    html{
+        font-size: 4vw;
+    }    
+}

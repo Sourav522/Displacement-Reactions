@@ -44,13 +44,6 @@ class Set {
             this.testTubes[i].src = './assets/' + testTubeImages[i];
             this.testTubes[i].style.left = (25 + (i * 20)) + '%';
 
-            // strips
-            this.strips[i] = document.createElement('IMG');
-            elementsHolder.appendChild(this.strips[i]);
-            this.strips[i].classList.add('strips');
-            this.strips[i].src = './assets/' + stripImages[0];
-            this.strips[i].style.left = (18 + (i * 20)) + '%';
-
             // strips_captions
             this.stripText[i] = document.createElement('DIV');
             elementsHolder.appendChild(this.stripText[i]);
@@ -58,11 +51,20 @@ class Set {
             this.stripText[i].style.left = (18 + (i * 20)) + '%';
             this.stripText[i].innerHTML = stripText[i];
 
+            // strips
+            this.strips[i] = document.createElement('IMG');
+            elementsHolder.appendChild(this.strips[i]);
+            this.strips[i].classList.add('strips');
+            this.strips[i].src = './assets/' + stripImages[0];
+            this.strips[i].style.left = (18 + (i * 20)) + '%';
+
             // strip clicked function
             this.strips[i].onclick = function () {
                 this.style.display = 'none';
                 for (j = 0; j < 3; j++) {
                     if (this == labSet.strips[j]) {
+                        labSet.stripText[j].style.display = "none";
+                        console.log(labSet.stripText[j]);
                         labSet.testTubes[j].src = './assets/set' + (j + 1).toString() + setNumber.toString() + '.png';
                         labSet.playReactionAnimation(j);
                     }
