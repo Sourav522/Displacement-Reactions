@@ -73,7 +73,13 @@
 .strips:hover{
     transform: scale(1.2);
 }
-
+.stripCaption{
+    position: absolute;
+    font-size: 0.7rem;
+    top:80%;
+    width:10%;
+    cursor: pointer;
+}
 .testTubeNotification{
     position: absolute;
     width: 15%;

@@ -7,6 +7,7 @@ var nextButton = document.getElementById('nextButton');
 // simulation data
 testTubeImages = ['test tube1.png', 'test tube2.png', 'test tube3.png'];
 stripImages = ['mgStrip.png', 'leadStrip.png', 'copperStrip.png'];
+stripText = ["Mg", "Pb", "Cu"];
 setVideosArray = [0];
 setVideosArray[1] = ['', 'test tube2.png', 'test tube3.png'];
 setVideosArray[2] = ['', '', 'test tube3.png'];
@@ -31,6 +32,7 @@ class Set {
         this.setNumber = setNumber;
         this.testTubes = [];
         this.strips = [];
+        this.stripText = [];
         this.reactionVideoElement = [0, 1, 2];
         this.notificationElement = [0, 1, 2];
         this.setStatus = [false, false, false];
@@ -48,6 +50,14 @@ class Set {
             this.strips[i].classList.add('strips');
             this.strips[i].src = './assets/' + stripImages[0];
             this.strips[i].style.left = (18 + (i * 20)) + '%';
+
+            // strips_captions
+            this.stripText[i] = document.createElement('DIV');
+            elementsHolder.appendChild(this.stripText[i]);
+            this.stripText[i].classList.add('stripCaption');
+            this.stripText[i].style.left = (18 + (i * 20)) + '%';
+            this.stripText[i].innerHTML = stripText[i];
+
             // strip clicked function
             this.strips[i].onclick = function () {
                 this.style.display = 'none';
