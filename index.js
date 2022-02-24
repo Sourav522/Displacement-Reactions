@@ -2,7 +2,7 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-var contentHolder = document.getElementById('contentHolder');
+var elementsHolder = document.getElementById('elementsHolder');
 var nextButton = document.getElementById('nextButton');
 
 // simulation data
@@ -38,14 +38,14 @@ class Set{
         for(i=0;i<3;i++){
             // testTubes
             this.testTubes[i] = document.createElement('IMG');
-            contentHolder.appendChild(this.testTubes[i]);
+            elementsHolder.appendChild(this.testTubes[i]);
             this.testTubes[i].classList.add('testTube');
             this.testTubes[i].src = './assets/'+testTubeImages[i];
             this.testTubes[i].style.left = (25+(i*20))+'%';
 
             // strips
             this.strips[i] = document.createElement('IMG');
-            contentHolder.appendChild(this.strips[i]);
+            elementsHolder.appendChild(this.strips[i]);
             this.strips[i].classList.add('strips');
             this.strips[i].src = './assets/'+stripImages[0];
             this.strips[i].style.left = (18+(i*20))+'%';
@@ -67,7 +67,7 @@ class Set{
             await sleep(1000);
             if(setVideosArray[setNumber][testTubeNumber]!=''){
                 this.reactionVideoElement[testTubeNumber] = document.createElement('IMG');
-                contentHolder.appendChild(this.reactionVideoElement[testTubeNumber]);
+                elementsHolder.appendChild(this.reactionVideoElement[testTubeNumber]);
                 this.reactionVideoElement[testTubeNumber].classList.add('testTube');
                 this.reactionVideoElement[testTubeNumber].src = './assets/'+setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (25+(testTubeNumber*20))+'%';
@@ -78,7 +78,7 @@ class Set{
         // to show the notification after reaction
         this.testTubeNotification = function(testTubeNumber){
             this.notificationElement[testTubeNumber] = document.createElement('DIV');
-            contentHolder.appendChild(this.notificationElement[testTubeNumber]);
+            elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification','alignTextCenter');
             this.notificationElement[testTubeNumber].style.left = (21.5+(testTubeNumber*20))+'%';
             this.notificationElement[testTubeNumber].innerHTML = setNotificationArray[setNumber][testTubeNumber];
@@ -93,12 +93,12 @@ class Set{
         this.mainNotification = async function(setNumber){
             // set number 
             this.setNumberDiv = document.createElement('DIV');
-            contentHolder.appendChild(this.setNumberDiv);
+            elementsHolder.appendChild(this.setNumberDiv);
             this.setNumberDiv.classList.add('setNumberDiv','alignTextCenter');
             this.setNumberDiv.innerHTML = 'Set '+setNumber;
             // main notification 
             this.mainNotificationElement = document.createElement('DIV');
-            contentHolder.appendChild(this.mainNotificationElement);
+            elementsHolder.appendChild(this.mainNotificationElement);
             this.mainNotificationElement.classList.add('mainNotification','alignTextCenter');
             this.mainNotificationElement.innerHTML = primaryNotificationData[setNumber];
             await sleep(3000);
@@ -111,12 +111,12 @@ class Set{
 class finalPage{
     constructor(){
         this.finalNotification = document.createElement('DIV');
-        contentHolder.appendChild(this.finalNotification);
+        elementsHolder.appendChild(this.finalNotification);
         this.finalNotification.classList.add('finalNotification','alignTextCenter');
         this.finalNotification.innerHTML = 'We have learnt';
 
         this.playAgainButton = document.createElement('DIV');
-        contentHolder.appendChild(this.playAgainButton);
+        elementsHolder.appendChild(this.playAgainButton);
         this.playAgainButton.classList.add('endButtons','alignTextCenter');
         this.playAgainButton.style.left = '30%';
         this.playAgainButton.innerHTML = 'Play again';
@@ -125,7 +125,7 @@ class finalPage{
         }
 
         this.finishButton = document.createElement('DIV');
-        contentHolder.appendChild(this.finishButton);
+        elementsHolder.appendChild(this.finishButton);
         this.finishButton.classList.add('endButtons','alignTextCenter');
         this.finishButton.style.left = '55%';
         this.finishButton.innerHTML = 'Finish';
@@ -146,10 +146,10 @@ window.onload = function(){
 }
 nextButton.onclick = function(){
     setState+=1;
-    document.getElementById('contentHolder').remove();
-    contentHolder = document.createElement('DIV');
-    document.getElementsByClassName('first-div')[0].appendChild(contentHolder);
-    contentHolder.setAttribute('id','contentHolder');
+    document.getElementById('elementsHolder').remove();
+    elementsHolder = document.createElement('DIV');
+    document.getElementsByClassName('first-div')[0].appendChild(elementsHolder);
+    elementsHolder.setAttribute('id','elementsHolder');
     nextButton.style.display = 'none';
     if(setState<=3){
         new Set(setState);
