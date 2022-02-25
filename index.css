@@ -19,11 +19,11 @@
     align-items: center;
     /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%); */
     background: url('./assets/labBackground1.png');
+    /* background: white; */
     background-size: 250%;
     background-position: center;
     overflow: hidden;
-  
-  }
+}
   
   .first-div{
     position: absolute;
@@ -153,7 +153,9 @@
 .finalNotification{
     position: absolute;
     left:50%;
-    top:20%;
+    top:15%;
+    width: 50%;
+    height: 40%;
     transform: translateX(-50%);
     font-size: 4vh;
     padding: 4vh;
@@ -169,16 +171,18 @@
 
 .endButtons{
     position: absolute;
-    top:65%;
+    /* left:50%; */
+    bottom:15%;
+    width: 20%;
+    transform: translateX(-50%);
+    font-size: 4vh;
+    padding: 4vh;
     background-color: #b6d1e4;
     backdrop-filter: blur(10px);
-    font-size: 6vh;
     border-radius: 1.7vh;
     color: rgb(112, 112, 112);
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
-    padding: 2vh 5vh;
     z-index: 1;
-    cursor: pointer;
     transition:100ms;
 }
 .endButtons:hover{

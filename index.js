@@ -83,7 +83,7 @@ class Set {
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (26 + (testTubeNumber * 20)) + '%';
             }
-            await sleep(2000);
+            await sleep(100);
             this.testTubeNotification(testTubeNumber);
         }
         // to show the notification after reaction
@@ -130,7 +130,7 @@ class finalPage {
         this.playAgainButton = document.createElement('DIV');
         elementsHolder.appendChild(this.playAgainButton);
         this.playAgainButton.classList.add('endButtons', 'alignTextCenter');
-        this.playAgainButton.style.left = '30%';
+        this.playAgainButton.style.left = '35%';
         this.playAgainButton.innerHTML = 'Play again';
         this.playAgainButton.onclick = function () {
             location.reload();
@@ -139,7 +139,7 @@ class finalPage {
         this.finishButton = document.createElement('DIV');
         elementsHolder.appendChild(this.finishButton);
         this.finishButton.classList.add('endButtons', 'alignTextCenter');
-        this.finishButton.style.left = '55%';
+        this.finishButton.style.left = '65%';
         this.finishButton.innerHTML = 'Finish';
         this.finishButton.onclick = function () {
             // add ds bridge
