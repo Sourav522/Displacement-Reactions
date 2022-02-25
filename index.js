@@ -9,16 +9,16 @@ testTubeImages = ['test tube1.png', 'test tube2.png', 'test tube3.png'];
 stripImages = ['mgStrip.png', 'leadStrip.png', 'copperStrip.png'];
 stripText = ["Mg", "Pb", "Cu"];
 setVideosArray = [0];
-setVideosArray[1] = ['', 'test tube2.png', 'test tube3.png'];
-setVideosArray[2] = ['', '', 'test tube3.png'];
+setVideosArray[1] = ['/gif-set-1/test tube1.gif', '/gif-set-1/test tube2.gif', '/gif-set-1/test tube3.gif'];
+setVideosArray[2] = ['', '', '/gif-set-1/test tube3.gif'];
 setVideosArray[3] = ['', '', ''];
 
 setNotificationArray = [0];
-setNotificationArray[1] = ['No change', 'Change observed', 'Change observed'];
-setNotificationArray[2] = ['No change', 'No change', 'Change observed'];
+setNotificationArray[1] = ['No change', 'Change observed!', 'Change observed!'];
+setNotificationArray[2] = ['No change', 'No change', 'Change observed!'];
 setNotificationArray[3] = ['No change', 'No change', 'No change'];
 
-primaryNotificationData = ['0', 'place strips into respective test tubes and observe the reactions', 'observe', 'observe'];
+primaryNotificationData = ['0', 'Place strips into respective test tubes and observe the reactions', 'Place strips into respective test tubes again and observe', 'Place strips into respective test tubes again and observe'];
 
 
 
@@ -42,20 +42,20 @@ class Set {
             elementsHolder.appendChild(this.testTubes[i]);
             this.testTubes[i].classList.add('testTube');
             this.testTubes[i].src = './assets/' + testTubeImages[i];
-            this.testTubes[i].style.left = (25 + (i * 20)) + '%';
+            this.testTubes[i].style.left = (26 + (i * 20)) + '%';
 
             // strips_captions
             this.stripText[i] = document.createElement('DIV');
             elementsHolder.appendChild(this.stripText[i]);
             this.stripText[i].classList.add('stripCaption');
-            this.stripText[i].style.left = (18 + (i * 20)) + '%';
+            this.stripText[i].style.left = (23 + (i * 20.2)) + '%';
             this.stripText[i].innerHTML = stripText[i];
 
             // strips
             this.strips[i] = document.createElement('IMG');
             elementsHolder.appendChild(this.strips[i]);
             this.strips[i].classList.add('strips');
-            this.strips[i].src = './assets/' + stripImages[0];
+            this.strips[i].src = './assets/' + stripImages[i];
             this.strips[i].style.left = (18 + (i * 20)) + '%';
 
             // strip clicked function
@@ -81,7 +81,7 @@ class Set {
                 elementsHolder.appendChild(this.reactionVideoElement[testTubeNumber]);
                 this.reactionVideoElement[testTubeNumber].classList.add('testTube');
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
-                this.reactionVideoElement[testTubeNumber].style.left = (25 + (testTubeNumber * 20)) + '%';
+                this.reactionVideoElement[testTubeNumber].style.left = (26 + (testTubeNumber * 20)) + '%';
             }
             await sleep(2000);
             this.testTubeNotification(testTubeNumber);
@@ -91,7 +91,7 @@ class Set {
             this.notificationElement[testTubeNumber] = document.createElement('DIV');
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
-            this.notificationElement[testTubeNumber].style.left = (21.5 + (testTubeNumber * 20)) + '%';
+            this.notificationElement[testTubeNumber].style.left = (29 + (testTubeNumber * 20)) + '%';
             this.notificationElement[testTubeNumber].innerHTML = setNotificationArray[setNumber][testTubeNumber];
             // check & update set status
             this.setStatus[testTubeNumber] = true;
@@ -113,6 +113,7 @@ class Set {
             this.mainNotificationElement.classList.add('mainNotification', 'alignTextCenter');
             this.mainNotificationElement.innerHTML = primaryNotificationData[setNumber];
             await sleep(3000);
+            console.log(this.mainNotificationElement);
             this.mainNotificationElement.remove();
         }
         this.mainNotification(setNumber);
@@ -124,7 +125,7 @@ class finalPage {
         this.finalNotification = document.createElement('DIV');
         elementsHolder.appendChild(this.finalNotification);
         this.finalNotification.classList.add('finalNotification', 'alignTextCenter');
-        this.finalNotification.innerHTML = 'We have learnt';
+        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu. A more reactive metal will replace a less reactive metal from its ionic salt solution';
 
         this.playAgainButton = document.createElement('DIV');
         elementsHolder.appendChild(this.playAgainButton);
