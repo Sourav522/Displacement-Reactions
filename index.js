@@ -32,7 +32,7 @@ class Set {
         var i = 0;
         var j = 0;
         var k = 0;
-        var labSet = this;
+        let labSet = this;
         this.setNumber = setNumber;
         this.testTubes = [];
         this.strips = [];
