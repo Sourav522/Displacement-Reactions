@@ -6,6 +6,12 @@
     font-family: Roboto;
     src: url('Roboto/Roboto-Regular.ttf');
   }
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+@font-face {
+    font-family: Carter One;
+    src: url('./Carter_One/CarterOne-Regular.ttf');
+}
+
 #bodyId{background-color: rgba(188, 191, 196, 0.534);font-family: Roboto;}
 
 .master-div{
@@ -44,7 +50,7 @@
 }
 .testTube{
     position: absolute;
-    top:14%;
+    top:0%;
     width:30%;
 }
 /* .reactionVideoElement{
@@ -54,7 +60,7 @@
 } */
 .strips{
     position: absolute;
-    top:65%;
+    top:50%;
     width:8%;
     cursor: pointer;
 }
@@ -64,8 +70,9 @@
 .stripCaption{
     position: absolute;
     font-size: 1rem;
-    font-family: Roboto;
-    bottom:5%;
+    font-family: Carter One;
+
+    bottom:20%;
     width:10%;
     color: rgba(198, 228, 255, 0.712);
     cursor: pointer;
@@ -74,27 +81,30 @@
     position: absolute;
     /* width: 15%; */
     /* height: 15%; */
-    top:88%;
+    top:80%;
+    font-family: Carter One;
+
     background: linear-gradient(0.5turn, #42abd4, #154c73);
     font-size: 0.6rem;
     font-weight: 900;
     padding: 0.3rem;
     border-radius: 0.3rem;
     color: #ffffff;
-    filter: drop-shadow(1px 3px 1px #2b1b09);
+
     transform: translateX(-50%);
 }
 .setNumberDiv{
     position: absolute;
-    left:3%;
-    height: 8%;
-    top:20%;
-    background: linear-gradient(0.5turn, #42abd4, #154c73);
-    font-size: 1rem;
-    border-radius: 0.3rem;
-    color: rgb(204, 204, 204);
-    padding:0.2rem 0.4rem;
+    font-family: Carter One;
 
+    left:3%;
+    /* height: 12%; */
+    top:79%;
+    background: rgb(137, 144, 148);
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    color: rgb(255, 255, 255);
+    padding:0.2rem 0.4rem;
 }
 
 .mainNotification{
@@ -103,12 +113,13 @@
     left: 50%;
     transform: translateX(-50%);
     /* background-color: #fdf57bfd; */
-    background: linear-gradient(0.5turn, #42abd4, #154c73);
-
+    background: linear-gradient(0.5turn, #68cdf5a2, #21608db6);
+    backdrop-filter: blur(5px);
     font-size: 0.7rem;
     border-radius: 0.3rem;
     color: rgb(255, 255, 255);
-    top:3%;
+    top:25%;
+    text-align: center;
     padding: 0.2rem 0.5rem;
 }
 
@@ -126,6 +137,8 @@
     font-size: 1.1rem;
     border-radius: 0.4rem;
     color: rgb(219, 219, 219);
+    font-family: Carter One;
+
     /* filter: drop-shadow(1px 1px 10px rgb(169, 252, 255)); */
     padding: 0.2rem 0.4rem;
     /* border: 0.14rem solid rgb(0, 204, 255); */
@@ -143,13 +156,16 @@
     position: absolute;
     left:50%;
     top:15%;
-    width: 50%;
+    width: 53%;
     height: 40%;
     transform: translateX(-50%);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
     font-size: 0.7rem;
+    text-align: center;
     padding: 0.5rem;
     background: linear-gradient(0.5turn, #42abd4, #154c73);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     border-radius: 0.5rem;
     color: rgb(236, 236, 236);
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
@@ -163,12 +179,13 @@
 .endButtons{
     position: absolute;
     /* left:50%; */
-    bottom:15%;
+    bottom:10%;
     width: 20%;
     transform: translateX(-50%);
-    font-size: 0.8rem;
-    padding: 0.5rem;
-    background: linear-gradient(0.5turn, #42abd4, #154c73);
+    font-size: 1.4rem;
+    font-family: Carter One;
+    padding: 0.4rem;
+    background: linear-gradient(0.5turn, #797979,#363636);
     backdrop-filter: blur(10px);
     border-radius: 0.5rem;
     color: rgb(230, 230, 230);
@@ -178,7 +195,7 @@
 }
 .endButtons:hover{
     cursor: pointer;
-    filter: brightness(140%);
+    /* filter: brightness(140%); */
     color: rgb(255, 255, 255);
 }
 
@@ -191,12 +208,16 @@
     top:2%;
     cursor: pointer;
     font-size: 1.7rem;
-    color: #2a6b96;
+    color: #626262;
 }
 /*     ANIMATIONS   */
 .classOscillation{
-    animation: grow 3s ease-in-out infinite;
+    animation: grow 2s ease-in-out infinite;
 }
+/* .classOscillationDelayed{
+    animation: grow 2s ease-in-out infinite;
+    animation-delay: 0.6s;
+} */
 @keyframes grow {
     0%{
         transform:scale(1); 

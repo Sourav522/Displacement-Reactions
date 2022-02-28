@@ -14,11 +14,11 @@ setVideosArray[2] = ['./GIFs/Set2/s2g1.gif', './GIFs/Set2/s2g2.gif', './GIFs/Set
 setVideosArray[3] = ['./GIFs/Set3/s3g1.gif', './GIFs/Set3/s3g2.gif', './GIFs/Set3/s3g3.gif'];
 
 setNotificationArray = [0];
-setNotificationArray[1] = ['No change', 'Change observed!', 'Change observed!'];
-setNotificationArray[2] = ['No change', 'No change', 'Change observed!'];
+setNotificationArray[1] = ['No change', 'Pb is deposited!', 'Cu is deposited!'];
+setNotificationArray[2] = ['No change', 'No change', 'Cu is deposited!'];
 setNotificationArray[3] = ['No change', 'No change', 'No change'];
 
-primaryNotificationData = ['0', 'Place the Mg strips into respective test tubes and observe the reactions', 'Place the Pb strips into respective test tubes again and observe', 'Place the Cu strips into respective test tubes again and observe'];
+primaryNotificationData = ['0', 'Click on the Mg strips to place them into respective test tubes and observe the reactions', 'Click on the Pb strips to place them into respective test tubes and observe the reactions', 'Click on the Cu strips to place them into respective test tubes and observe the reactions'];
 
 //CSS variables
 let testTubeLeft = 10;
@@ -54,6 +54,8 @@ class Set {
             this.stripText[i].classList.add('stripCaption');
             this.stripText[i].style.left = (StripLeft + 3 + (i * testTubeGap)) + '%';
             this.stripText[i].innerHTML = stripTextCaption[setNumber - 1];
+            // this.stripText[i].classList.add("classOscillation");
+
 
             // strips
             this.strips[i] = document.createElement('IMG');
@@ -62,6 +64,7 @@ class Set {
             this.strips[i].src = './assets/' + stripImages[setNumber - 1];
             this.strips[i].style.left = (StripLeft + (i * testTubeGap)) + '%';
             this.strips[i].style.zIndex = (5 + i).toString();
+            this.strips[i].classList.add("classOscillation");
 
             // strip clicked function
             this.strips[i].onclick = function () {
@@ -89,7 +92,7 @@ class Set {
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (testTubeLeft + (testTubeNumber * testTubeGap)) + '%';
             }
-            await sleep(4500);
+            await sleep(5000);
             this.testTubeNotification(testTubeNumber);
         }
         // to show the notification after reaction
@@ -135,7 +138,7 @@ class Set {
             this.mainNotificationElement.classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
-            await sleep(4000);
+            await sleep(6000);
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslatedVanish");
@@ -152,29 +155,30 @@ class finalPage {
         this.finalNotification = document.createElement('DIV');
         elementsHolder.appendChild(this.finalNotification);
         this.finalNotification.classList.add('finalNotification', 'alignTextCenter');
-        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu. A more reactive metal will replace a less reactive metal from its ionic salt solution.';
+        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu.<br><br> A more reactive metal will replace a less reactive metal from its ionic salt solution.';
         this.finalNotification.classList.add("classPopupAnimTranslated");
 
-        this.playAgainButton = document.createElement('DIV');
-        elementsHolder.appendChild(this.playAgainButton);
-        this.playAgainButton.classList.add('endButtons', 'alignTextCenter');
-        this.playAgainButton.style.left = '35%';
-        this.playAgainButton.innerHTML = 'PLAY AGAIN';
-        this.playAgainButton.classList.add("classPopupAnimTranslated");
-        let elementTarget = this;
-        this.playAgainButton.onclick = function () {
-            elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
-            elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
-            elementTarget.finalNotification.classList.remove("classPopupAnimTranslated");
-            location.reload();
-        }
+        // this.playAgainButton = document.createElement('DIV');
+        // elementsHolder.appendChild(this.playAgainButton);
+        // this.playAgainButton.classList.add('endButtons', 'alignTextCenter');
+        // this.playAgainButton.style.left = '35%';
+        // this.playAgainButton.innerHTML = 'PLAY AGAIN';
+        // this.playAgainButton.classList.add("classPopupAnimTranslated");
+        // let elementTarget = this;
+        // this.playAgainButton.onclick = function () {
+        //     elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
+        //     elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
+        //     elementTarget.finalNotification.classList.remove("classPopupAnimTranslated");
+        //     location.reload(true);
+        // }
 
         this.finishButton = document.createElement('DIV');
         elementsHolder.appendChild(this.finishButton);
         this.finishButton.classList.add('endButtons', 'alignTextCenter');
-        this.finishButton.style.left = '65%';
+        this.finishButton.style.left = '50%';
         this.finishButton.innerHTML = 'FINISH';
         this.finishButton.classList.add("classPopupAnimTranslated");
+        // this.finishButton.classList.add("classOscillationDelayed");
         this.finishButton.onclick = function () {
             // add ds bridge
         }
