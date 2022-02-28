@@ -20,11 +20,10 @@
     /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%); */
     /* background: url('./assets/labBackground1.png'); */
     background: rgb(0, 0, 0);
-    background-size: 250%;
+    /* background-size: 250%; */
     background-position: center;
     overflow: hidden;
 }
-  
   .first-div{
     position: absolute;
     width:177.77vh;
@@ -68,7 +67,7 @@
     font-family: Roboto;
     bottom:5%;
     width:10%;
-    color: rgb(219, 219, 219);
+    color: rgba(198, 228, 255, 0.712);
     cursor: pointer;
 }
 .testTubeNotification{
@@ -76,12 +75,12 @@
     /* width: 15%; */
     /* height: 15%; */
     top:88%;
-    background-color: rgb(255, 251, 25);
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
     font-size: 0.6rem;
     font-weight: 900;
     padding: 0.3rem;
     border-radius: 0.3rem;
-    color: #2b1b09;
+    color: #ffffff;
     filter: drop-shadow(1px 3px 1px #2b1b09);
     transform: translateX(-50%);
 }
@@ -89,13 +88,12 @@
     position: absolute;
     left:3%;
     height: 8%;
-    top:5%;
-    background-color: #bdbdbd8a;
-    filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
-    font-size: 7vh;
-    border-radius: 1.3vh;
-    color: rgb(218, 218, 218);
-    padding: 1vh 2vh;
+    top:20%;
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
+    font-size: 1rem;
+    border-radius: 1rem;
+    color: rgb(204, 204, 204);
+    padding:0.2rem 0.4rem;
 
 }
 
@@ -104,14 +102,14 @@
     /* width: 60%; */
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fdf57bfd;
-    font-size: 3.5vh;
-    border-radius: 2.3vh;
-    color: rgb(95, 95, 95);
-    filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
+    /* background-color: #fdf57bfd; */
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
 
-    top:2%;
-    padding: 3vh 5vh;
+    font-size: 0.7rem;
+    border-radius: 0.3rem;
+    color: rgb(255, 255, 255);
+    top:3%;
+    padding: 0.2rem 0.5rem;
 }
 
 .alignTextCenter{
@@ -123,20 +121,21 @@
 #nextButton{
     position: absolute;
     right: 1%;
-    bottom: 2%;
-    background-color: rgb(182, 209, 228);
-    font-size: 0.9rem;
-    border-radius: 1rem;
-    color: rgb(112, 112, 112);
-    filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
-    padding: 2vh 5vh;
+    top: 5%;
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
+    font-size: 1.1rem;
+    border-radius: 0.4rem;
+    color: rgb(219, 219, 219);
+    /* filter: drop-shadow(1px 1px 10px rgb(169, 252, 255)); */
+    padding: 0.2rem 0.4rem;
+    /* border: 0.14rem solid rgb(0, 204, 255); */
     z-index: 1;
     cursor: pointer;
     transition:100ms;
 }
 #nextButton:hover{
-    background-color: #5b96bd59;
     color: rgb(255, 255, 255);
+    filter: brightness(120%);
 }
 
 
@@ -147,12 +146,12 @@
     width: 50%;
     height: 40%;
     transform: translateX(-50%);
-    font-size: 4vh;
-    padding: 4vh;
-    background-color: #b6d1e4;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
     backdrop-filter: blur(10px);
-    border-radius: 1.7vh;
-    color: rgb(112, 112, 112);
+    border-radius: 0.5rem;
+    color: rgb(236, 236, 236);
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
     z-index: 1;
     transition:100ms;
@@ -167,20 +166,20 @@
     bottom:15%;
     width: 20%;
     transform: translateX(-50%);
-    font-size: 4vh;
-    padding: 4vh;
-    background-color: #b6d1e4;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
     backdrop-filter: blur(10px);
-    border-radius: 1.7vh;
-    color: rgb(112, 112, 112);
+    border-radius: 0.5rem;
+    color: rgb(230, 230, 230);
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
     z-index: 1;
     transition:100ms;
 }
 .endButtons:hover{
     cursor: pointer;
-    background-color: #06345259;
-    color: rgba(255, 255, 255, 0.781);
+    filter: brightness(140%);
+    color: rgb(255, 255, 255);
 }
 
 
@@ -188,11 +187,27 @@
 #crossButton{
     position: absolute;
     z-index: 1;
-    left: 90%;
-    top:5%;
+    left: 6%;
+    top:2%;
     cursor: pointer;
-    font-size: 14vh;
-    color: #7464cec4;
+    font-size: 1.7rem;
+    color: #2a6b96;
+}
+/*     ANIMATIONS   */
+.classOscillation{
+    animation: grow 3s ease-in-out infinite;
+}
+@keyframes grow {
+    0%{
+        transform:scale(1); 
+    }
+    50%{
+        transform:scaleX(1.15) scaleY(1.1);
+        /* filter: brightness(1.2); */
+    }
+    100%{
+        transform:scaleX(1);
+    }
 }
 
 .classPopupAnim{
@@ -256,10 +271,5 @@
     }
     html{
         font-size:3.99vw ;
-    }
-    .setNumberDiv{
-        font-size: 3.9vw;
-        border-radius: 0.7vw;
-        padding: 0.56vw 1.1vw;
     }
   }

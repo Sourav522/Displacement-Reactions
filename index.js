@@ -18,7 +18,7 @@ setNotificationArray[1] = ['No change', 'Change observed!', 'Change observed!'];
 setNotificationArray[2] = ['No change', 'No change', 'Change observed!'];
 setNotificationArray[3] = ['No change', 'No change', 'No change'];
 
-primaryNotificationData = ['0', 'Place strips into respective test tubes and observe the reactions', 'Place strips into respective test tubes again and observe', 'Place strips into respective test tubes again and observe'];
+primaryNotificationData = ['0', 'Place the Mg strips into respective test tubes and observe the reactions', 'Place the Pb strips into respective test tubes again and observe', 'Place the Cu strips into respective test tubes again and observe'];
 
 //CSS variables
 let testTubeLeft = 10;
@@ -89,7 +89,7 @@ class Set {
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (testTubeLeft + (testTubeNumber * testTubeGap)) + '%';
             }
-            await sleep(100);
+            await sleep(4500);
             this.testTubeNotification(testTubeNumber);
         }
         // to show the notification after reaction
@@ -97,7 +97,7 @@ class Set {
             this.notificationElement[testTubeNumber] = document.createElement('DIV');
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
-            this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap)) + '%';
+            this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap + 1)) + '%';
             this.notificationElement[testTubeNumber].innerHTML = setNotificationArray[setNumber][testTubeNumber];
             this.notificationElement[testTubeNumber].style.zIndex = ([testTubeNumber] + 1).toString();
             this.notificationElement[testTubeNumber].classList.add("classPopupAnimTranslated");
@@ -111,6 +111,7 @@ class Set {
                 nextButton.classList.add("classPopupAnim");
                 await sleep(500);
                 nextButton.classList.remove("classPopupAnim");
+                nextButton.classList.add("classOscillation");
             }
         }
 
@@ -134,7 +135,7 @@ class Set {
             this.mainNotificationElement.classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
-            await sleep(3000);
+            await sleep(4000);
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslatedVanish");
@@ -151,7 +152,7 @@ class finalPage {
         this.finalNotification = document.createElement('DIV');
         elementsHolder.appendChild(this.finalNotification);
         this.finalNotification.classList.add('finalNotification', 'alignTextCenter');
-        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu. A more reactive metal will replace a less reactive metal from its ionic salt solution';
+        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu. A more reactive metal will replace a less reactive metal from its ionic salt solution.';
         this.finalNotification.classList.add("classPopupAnimTranslated");
 
         this.playAgainButton = document.createElement('DIV');
@@ -190,6 +191,7 @@ window.onload = function () {
     nextButton.style.display = 'none';
 }
 nextButton.onclick = function () {
+    nextButton.classList.remove("classOscillation");
     setState += 1;
     document.getElementById('elementsHolder').remove();
     elementsHolder = document.createElement('DIV');
