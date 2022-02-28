@@ -18,8 +18,8 @@
     justify-content: center;
     align-items: center;
     /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%); */
-    background: url('./assets/labBackground1.png');
-    /* background: white; */
+    /* background: url('./assets/labBackground1.png'); */
+    background: rgb(0, 0, 0);
     background-size: 250%;
     background-position: center;
     overflow: hidden;
@@ -54,8 +54,8 @@
 }
 .testTube{
     position: absolute;
-    top:20%;
-    width:8%;
+    top:14%;
+    width:30%;
 }
 /* .reactionVideoElement{
     position: absolute;
@@ -73,11 +73,11 @@
 }
 .stripCaption{
     position: absolute;
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     font-family: Roboto;
-    top:92%;
+    bottom:12%;
     width:10%;
-    color: grey;
+    color: rgb(219, 219, 219);
     cursor: pointer;
 }
 .testTubeNotification{
@@ -131,7 +131,7 @@
 
 #nextButton{
     position: absolute;
-    right: 5%;
+    right: 1%;
     bottom: 5%;
     background-color: #b6d1e4;
     backdrop-filter: blur(10px);
@@ -166,7 +166,9 @@
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
     z-index: 1;
     transition:100ms;
-
+}
+.finalNotification:hover{
+    cursor:default;
 }
 
 .endButtons{
@@ -186,6 +188,7 @@
     transition:100ms;
 }
 .endButtons:hover{
+    cursor: pointer;
     background-color: #06345259;
     color: rgba(255, 255, 255, 0.781);
 }
@@ -198,8 +201,62 @@
     left: 90%;
     top:5%;
     cursor: pointer;
-    font-size: 9vh;
-    color: grey;
+    font-size: 14vh;
+    color: #7464cec4;
+}
+
+.classPopupAnim{
+    animation: popup 0.5s cubic-bezier(1, 0.22, 0.38, 1.39) 1;
+}
+@keyframes popup {
+    0%{
+       transform: scale(0.1);
+       opacity: 0.0; 
+    }
+    100%{
+        transform: scale(1); 
+        opacity: 1;
+    }
+}
+.classPopupAnimTranslated{
+    animation: popup2 0.5s cubic-bezier(1, 0.22, 0.38, 1.39) 1 forwards;
+}
+@keyframes popup2 {
+    0%{
+       transform: translateX(-50%) scale(0.1);
+       opacity: 0.0; 
+    }
+    100%{
+        transform: translateX(-50%) scale(1); 
+        opacity: 1;
+    }
+}
+/* THE VANISSHING ANIMATIONS */
+.classPopupAnimVanish{
+    animation: popup3 0.5s cubic-bezier(1, 0.22, 0.38, 1.39) 1 forwards;
+}
+@keyframes popup3 {
+    0%{
+       transform: scale(0.1);
+       opacity: 0.0; 
+    }
+    100%{
+        transform: scale(1); 
+        opacity: 1;
+    }
+}
+.classPopupAnimTranslatedVanish{
+    animation: popup4 0.5s cubic-bezier(1, 0.22, 0.38, 1.39) 1 forwards;
+}
+@keyframes popup4 {
+    0%{
+        transform: translateX(-50%) scale(1); 
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(-50%) scale(0.0);
+        opacity: 0.0; 
+    }
 }
 /* ------------------ MEDIA QUERIES ------------------ */
 @media only screen and (max-aspect-ratio:16/9 ) {
