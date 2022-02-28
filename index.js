@@ -159,7 +159,7 @@ class finalPage {
         elementsHolder.appendChild(this.playAgainButton);
         this.playAgainButton.classList.add('endButtons', 'alignTextCenter');
         this.playAgainButton.style.left = '35%';
-        this.playAgainButton.innerHTML = 'Play again';
+        this.playAgainButton.innerHTML = 'PLAY AGAIN';
         this.playAgainButton.classList.add("classPopupAnimTranslated");
         let elementTarget = this;
         this.playAgainButton.onclick = function () {
@@ -173,7 +173,7 @@ class finalPage {
         elementsHolder.appendChild(this.finishButton);
         this.finishButton.classList.add('endButtons', 'alignTextCenter');
         this.finishButton.style.left = '65%';
-        this.finishButton.innerHTML = 'Finish';
+        this.finishButton.innerHTML = 'FINISH';
         this.finishButton.classList.add("classPopupAnimTranslated");
         this.finishButton.onclick = function () {
             // add ds bridge
