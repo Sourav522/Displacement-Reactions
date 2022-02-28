@@ -33,20 +33,11 @@
     margin-left:0px;
     /* border: 1.0px solid black; */
     overflow: hidden;
-    
-    
   }
-
   html{
     font-size:7.11vh;
     font-family: Roboto;
-
   }
-
-
-
-
-
 #elementsHolder{
     position: absolute;
     width: 100%;
@@ -64,7 +55,7 @@
 } */
 .strips{
     position: absolute;
-    top:70%;
+    top:65%;
     width:8%;
     cursor: pointer;
 }
@@ -73,9 +64,9 @@
 }
 .stripCaption{
     position: absolute;
-    font-size: 0.5rem;
+    font-size: 1rem;
     font-family: Roboto;
-    bottom:12%;
+    bottom:5%;
     width:10%;
     color: rgb(219, 219, 219);
     cursor: pointer;
@@ -86,10 +77,10 @@
     /* height: 15%; */
     top:88%;
     background-color: rgb(255, 251, 25);
-    font-size: 2.7vh;
+    font-size: 0.6rem;
     font-weight: 900;
-    padding: 2vh;
-    border-radius: 2vh;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
     color: #2b1b09;
     filter: drop-shadow(1px 3px 1px #2b1b09);
     transform: translateX(-50%);
@@ -97,13 +88,13 @@
 .setNumberDiv{
     position: absolute;
     left:3%;
-    height: 5%;
+    height: 8%;
     top:5%;
-    background-color: #bdbdbd;
+    background-color: #bdbdbd8a;
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
-    font-size: 4vh;
+    font-size: 7vh;
     border-radius: 1.3vh;
-    color: rgb(255, 255, 255);
+    color: rgb(218, 218, 218);
     padding: 1vh 2vh;
 
 }
@@ -132,11 +123,10 @@
 #nextButton{
     position: absolute;
     right: 1%;
-    bottom: 5%;
-    background-color: #b6d1e4;
-    backdrop-filter: blur(10px);
-    font-size: 6vh;
-    border-radius: 1.7vh;
+    bottom: 2%;
+    background-color: rgb(182, 209, 228);
+    font-size: 0.9rem;
+    border-radius: 1rem;
     color: rgb(112, 112, 112);
     filter: drop-shadow(1px 3px 1px rgba(0, 0, 0, 0.596));
     padding: 2vh 5vh;
@@ -145,8 +135,8 @@
     transition:100ms;
 }
 #nextButton:hover{
-    background-color: #06345259;
-    color: rgba(255, 255, 255, 0.781);
+    background-color: #5b96bd59;
+    color: rgb(255, 255, 255);
 }
 
 
@@ -265,6 +255,11 @@
         height:56.25vw;
     }
     html{
-        font-size:2.25vw ;
+        font-size:3.99vw ;
+    }
+    .setNumberDiv{
+        font-size: 3.9vw;
+        border-radius: 0.7vw;
+        padding: 0.56vw 1.1vw;
     }
   }

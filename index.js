@@ -6,8 +6,8 @@ var nextButton = document.getElementById('nextButton');
 
 // simulation data
 testTubeImages = ['/GIFs/Set1/StartPics/s1g1Start.jpg', '/GIFs/Set1/StartPics/s1g2Start.jpg', '/GIFs/Set1/StartPics/s1g3Start.jpg'];
-stripImages = ['mgStrip.png', 'mgStrip.png', 'mgStrip.png'];
-stripText = ["Mg", "Mg", "Mg"];
+stripImages = ['mgStrip.png', 'leadStrip.png', 'copperStrip.png'];
+stripTextCaption = ["Mg", "Pb", "Cu"];
 setVideosArray = [0];
 setVideosArray[1] = ['./GIFs/Set1/s1g1.gif', './GIFs/Set1/s1g2.gif', './GIFs/Set1/s1g3.gif'];
 setVideosArray[2] = ['./GIFs/Set2/s2g1.gif', './GIFs/Set2/s2g2.gif', './GIFs/Set2/s2g3.gif'];
@@ -23,7 +23,7 @@ primaryNotificationData = ['0', 'Place strips into respective test tubes and obs
 //CSS variables
 let testTubeLeft = 10;
 let testTubeGap = 25;
-let StripLeft = 15;
+let StripLeft = 13;
 let reactionNotifLeft = 25;
 
 class Set {
@@ -52,14 +52,14 @@ class Set {
             this.stripText[i] = document.createElement('DIV');
             elementsHolder.appendChild(this.stripText[i]);
             this.stripText[i].classList.add('stripCaption');
-            this.stripText[i].style.left = (StripLeft + (i * testTubeGap)) + '%';
-            this.stripText[i].innerHTML = stripText[i];
+            this.stripText[i].style.left = (StripLeft + 3 + (i * testTubeGap)) + '%';
+            this.stripText[i].innerHTML = stripTextCaption[setNumber - 1];
 
             // strips
             this.strips[i] = document.createElement('IMG');
             elementsHolder.appendChild(this.strips[i]);
             this.strips[i].classList.add('strips');
-            this.strips[i].src = './assets/' + stripImages[i];
+            this.strips[i].src = './assets/' + stripImages[setNumber - 1];
             this.strips[i].style.left = (StripLeft + (i * testTubeGap)) + '%';
             this.strips[i].style.zIndex = (5 + i).toString();
 
@@ -121,6 +121,7 @@ class Set {
             elementsHolder.appendChild(this.setNumberDiv);
             this.setNumberDiv.classList.add('setNumberDiv', 'alignTextCenter');
             this.setNumberDiv.innerHTML = 'Set ' + setNumber;
+            this.setNumberDiv.style.zIndex = "11";
             this.setNumberDiv.classList.add("classPopupAnim");
             await sleep(500);
             this.setNumberDiv.classList.remove("classPopupAnim");
@@ -159,10 +160,11 @@ class finalPage {
         this.playAgainButton.style.left = '35%';
         this.playAgainButton.innerHTML = 'Play again';
         this.playAgainButton.classList.add("classPopupAnimTranslated");
+        let elementTarget = this;
         this.playAgainButton.onclick = function () {
-            this.playAgainButton.classList.remove("classPopupAnimTranslated");
-            this.playAgainButton.classList.remove("classPopupAnimTranslated");
-            this.finalNotification.classList.remove("classPopupAnimTranslated");
+            elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
+            elementTarget.playAgainButton.classList.remove("classPopupAnimTranslated");
+            elementTarget.finalNotification.classList.remove("classPopupAnimTranslated");
             location.reload();
         }
 
