@@ -21,10 +21,10 @@ setNotificationArray[3] = ['No change', 'No change', 'No change'];
 primaryNotificationData = ['0', 'Click on the Mg strips to place them into respective test tubes and observe the reactions', 'Click on the Pb strips to place them into respective test tubes and observe the reactions', 'Click on the Cu strips to place them into respective test tubes and observe the reactions'];
 
 //CSS variables
-let testTubeLeft = 10;
+let testTubeLeft = 20;
 let testTubeGap = 25;
-let StripLeft = 13;
-let reactionNotifLeft = 25;
+let StripLeft = 0;
+let reactionNotifLeft = 34.5;
 
 class Set {
     constructor(setNumber) {
@@ -48,37 +48,44 @@ class Set {
             this.testTubes[i].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${i + 1}Start.jpg`;
             this.testTubes[i].style.left = (testTubeLeft + (i * testTubeGap)) + '%';
 
+        }
+        for (i = setNumber - 1; i < 3; i++) {
             // strips_captions
             this.stripText[i] = document.createElement('DIV');
             elementsHolder.appendChild(this.stripText[i]);
             this.stripText[i].classList.add('stripCaption');
-            this.stripText[i].style.left = (StripLeft + 3 + (i * testTubeGap)) + '%';
-            this.stripText[i].innerHTML = stripTextCaption[setNumber - 1];
-            // this.stripText[i].classList.add("classOscillation");
-
+            this.stripText[i].style.left = '17%';
+            this.stripText[i].style.top = 27 + i * 19 + "%";
+            this.stripText[i].innerHTML = stripTextCaption[i];
+            this.stripText[i].style.zIndex = (5 + i).toString();
+            if (i == 1) { this.stripText[i].style.color = "#999999"; } //colouring font
+            else if (i == 2) { this.stripText[i].style.color = "#ffc7a1bb"; }
 
             // strips
             this.strips[i] = document.createElement('IMG');
             elementsHolder.appendChild(this.strips[i]);
             this.strips[i].classList.add('strips');
-            this.strips[i].src = './assets/' + stripImages[setNumber - 1];
-            this.strips[i].style.left = (StripLeft + (i * testTubeGap)) + '%';
+            this.strips[i].src = './assets/' + stripImages[i];
+            this.strips[i].style.left = '7%';
+            this.strips[i].style.top = 20 + i * 19 + "%";
             this.strips[i].style.zIndex = (5 + i).toString();
-            this.strips[i].classList.add("classOscillation");
-
-            // strip clicked function
-            this.strips[i].onclick = function () {
-                this.style.display = 'none';
-                for (j = 0; j < 3; j++) {
-                    if (this == labSet.strips[j]) {
-                        labSet.stripText[j].style.display = "none";
-                        // console.log(labSet.stripText[j]);
-                        labSet.testTubes[j].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${j + 1}Start.jpg`;
-                        labSet.playReactionAnimation(j);
-                    }
+            if (i == setNumber - 1) { //animating only one strip
+                this.strips[i].classList.add("classOscillation");
+            }
+        }
+        // strip clicked function
+        this.strips[setNumber - 1].onclick = function () {
+            this.style.display = 'none';
+            for (j = 0; j < 3; j++) {
+                if (this == labSet.strips[j]) {
+                    labSet.stripText[j].style.display = "none";
                 }
+                // console.log(labSet.stripText[j]);
+                labSet.testTubes[j].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${j + 1}Start.jpg`;
+                labSet.playReactionAnimation(j);
 
             }
+
         }
 
         // to run the reaction video/animation
@@ -97,7 +104,14 @@ class Set {
         }
         // to show the notification after reaction
         this.testTubeNotification = async function (testTubeNumber) {
-            this.notificationElement[testTubeNumber] = document.createElement('DIV');
+
+            //creating a checkbox
+            this.notificationElement[testTubeNumber] = document.createElement('input');
+            this.notificationElement[testTubeNumber].type = "checkbox";
+            this.notificationElement[testTubeNumber].name = "name";
+            this.notificationElement[testTubeNumber].value = "value";
+            this.notificationElement[testTubeNumber].id = "id";
+
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
             this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap + 1)) + '%';
@@ -217,7 +231,7 @@ nextButton.onclick = function () {
     }
 }
 
-document.getElementById('crossButton').onclick = function(){
+document.getElementById('crossButton').onclick = function () {
     console.log('close');
     dsBridge.call("byjus.sendExploreUIEvent", {
 

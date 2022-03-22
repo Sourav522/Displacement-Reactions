@@ -69,14 +69,16 @@
 
     bottom:20%;
     width:10%;
-    color: rgba(198, 228, 255, 0.712);
+    color: #b4b4b4;
     cursor: pointer;
 }
 .testTubeNotification{
     position: absolute;
-    /* width: 15%; */
-    /* height: 15%; */
+    background-color: green;
+    width: 12%;
+    height: 12%;
     top:80%;
+    accent-color: grey;
     /* font-family: Carter One; */
 
     background: linear-gradient(0.5turn, #42abd4, #154c73);
@@ -90,11 +92,8 @@
 }
 .setNumberDiv{
     position: absolute;
-    /* font-family: Carter One; */
-
-    left:3%;
-    /* height: 12%; */
-    top:79%;
+    left:7%;
+    bottom:5%;
     background: rgb(137, 144, 148);
     font-size: 0.8rem;
     border-radius: 0.2rem;
