@@ -72,7 +72,7 @@ class Set {
                 for (j = 0; j < 3; j++) {
                     if (this == labSet.strips[j]) {
                         labSet.stripText[j].style.display = "none";
-                        console.log(labSet.stripText[j]);
+                        // console.log(labSet.stripText[j]);
                         labSet.testTubes[j].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${j + 1}Start.jpg`;
                         labSet.playReactionAnimation(j);
                     }
@@ -180,7 +180,14 @@ class finalPage {
         this.finishButton.classList.add("classPopupAnimTranslated");
         // this.finishButton.classList.add("classOscillationDelayed");
         this.finishButton.onclick = function () {
-            // add ds bridge
+            console.log('finish');
+            dsBridge.call("byjus.sendExploreUIEvent", {
+
+                tag: "finish",
+
+                data: ""
+
+            });
         }
     }
 }
@@ -208,6 +215,17 @@ nextButton.onclick = function () {
     else {
         new finalPage();
     }
+}
+
+document.getElementById('crossButton').onclick = function(){
+    console.log('close');
+    dsBridge.call("byjus.sendExploreUIEvent", {
+
+        tag: "close",
+
+        data: ""
+
+    });
 }
 
 
