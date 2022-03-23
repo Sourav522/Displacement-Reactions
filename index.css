@@ -74,37 +74,35 @@
 }
 .testTubeNotification{
     position: absolute;
-    background-color: green;
     width: 12%;
     height: 12%;
     top:80%;
     accent-color: grey;
-    /* font-family: Carter One; */
-
     background: linear-gradient(0.5turn, #42abd4, #154c73);
-    font-size: 0.6rem;
-    font-weight: 900;
     padding: 0.3rem;
     border-radius: 0.3rem;
     color: #ffffff;
-
     transform: translateX(-50%);
 }
+
+    
 .setNumberDiv{
+    display: none!;
     position: absolute;
     left:7%;
     bottom:5%;
-    background: rgb(137, 144, 148);
+    background: rgb(31, 31, 31);
     font-size: 0.8rem;
-    border-radius: 0.2rem;
-    color: rgb(255, 255, 255);
+    border-radius: 0.1rem;
+    color: rgb(167, 167, 167);
     padding:0.2rem 0.4rem;
+    opacity: 0;
 }
 
 .mainNotification{
     position: absolute;
-    /* width: 60%; */
-    left: 50%;
+    width: 42%;
+    left: 54%;
     transform: translateX(-50%);
     /* background-color: #fdf57bfd; */
     background: linear-gradient(0.5turn, #68cdf5a2, #21608db6);
@@ -129,7 +127,7 @@
     top: 5%;
     background: linear-gradient(0.5turn, #42abd4, #154c73);
     font-size: 1.1rem;
-    border-radius: 0.4rem;
+    border-radius: 0.1rem;
     color: rgb(219, 219, 219);
     /* font-family: Carter One; */
 
@@ -143,6 +141,47 @@
 #nextButton:hover{
     color: rgb(255, 255, 255);
     filter: brightness(120%);
+}
+
+#submitButton{
+    position: absolute;
+    display: none;
+    right: 2.5%;
+    bottom: 8.8%;
+    background: linear-gradient(0.5turn, #42abd4, #154c73);
+    font-size: 0.9rem;
+    border-radius: 0.1rem;
+    color: rgb(219, 219, 219);
+    /* font-family: Carter One; */
+
+    /* filter: drop-shadow(1px 1px 10px rgb(169, 252, 255)); */
+    padding: 0.2rem 0.4rem;
+    /* border: 0.14rem solid rgb(0, 204, 255); */
+    z-index: 1;
+    cursor: pointer;
+    transition:100ms;
+}
+#submitButton:hover{
+    color: rgb(255, 255, 255);
+    filter: brightness(120%);
+}
+
+#submitInstructions{
+    /* display: none; */
+    position: absolute;
+    width: 55% !important;
+    left: 53.5%;
+    transform: translateX(-50%);
+    /* background-color: #fdf57bfd; */
+    background: linear-gradient(0.5turn, #68cdf5a2, #21608db6);
+    backdrop-filter: blur(5px);
+    font-size: 0.7rem !important;
+    border-radius: 0.3rem;
+    color: rgb(255, 255, 255);
+    top:62%;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    z-index: 10;
 }
 
 

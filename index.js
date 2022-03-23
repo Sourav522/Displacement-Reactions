@@ -1,9 +1,13 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-var elementsHolder = document.getElementById('elementsHolder');
-var nextButton = document.getElementById('nextButton');
+let elementsHolder = document.getElementById('elementsHolder');
+let nextButton = document.getElementById('nextButton');
+let submitButton = document.getElementById('submitButton');
+let submitInstructions = document.getElementById('submitInstructions');
+submitInstructions.style.display = "none"; // keep it invisible
 
+// let checkboxCopyRef = [];
 // simulation data
 testTubeImages = ['/GIFs/Set1/StartPics/s1g1Start.jpg', '/GIFs/Set1/StartPics/s1g2Start.jpg', '/GIFs/Set1/StartPics/s1g3Start.jpg'];
 stripImages = ['mgStrip.png', 'leadStrip.png', 'copperStrip.png'];
@@ -21,17 +25,18 @@ setNotificationArray[3] = ['No change', 'No change', 'No change'];
 primaryNotificationData = ['0', 'Click on the Mg strips to place them into respective test tubes and observe the reactions', 'Click on the Pb strips to place them into respective test tubes and observe the reactions', 'Click on the Cu strips to place them into respective test tubes and observe the reactions'];
 
 //CSS variables
-let testTubeLeft = 20;
-let testTubeGap = 25;
+let testTubeLeft = 17;
+let testTubeGap = 21;
 let StripLeft = 0;
-let reactionNotifLeft = 34.5;
-
+let reactionNotifLeft = 31.5;
+let globalTestTubeNumberCheckedValue = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
+let correctTicks = [[-1, 1, 1], [-1, -1, 1], [-1, -1, -1]];
 class Set {
     constructor(setNumber) {
         // test tubes
-        var i = 0;
-        var j = 0;
-        var k = 0;
+        let i = 0;
+        let j = 0;
+        let k = 0;
         let labSet = this;
         this.setNumber = setNumber;
         this.testTubes = [];
@@ -80,12 +85,9 @@ class Set {
                 if (this == labSet.strips[j]) {
                     labSet.stripText[j].style.display = "none";
                 }
-                // console.log(labSet.stripText[j]);
                 labSet.testTubes[j].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${j + 1}Start.jpg`;
                 labSet.playReactionAnimation(j);
-
             }
-
         }
 
         // to run the reaction video/animation
@@ -99,50 +101,69 @@ class Set {
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (testTubeLeft + (testTubeNumber * testTubeGap)) + '%';
             }
-            await sleep(5000);
+            await sleep(501); //5000
             this.testTubeNotification(testTubeNumber);
         }
-        // to show the notification after reaction
+        // to show the checkbox after reaction
         this.testTubeNotification = async function (testTubeNumber) {
-
             //creating a checkbox
             this.notificationElement[testTubeNumber] = document.createElement('input');
             this.notificationElement[testTubeNumber].type = "checkbox";
-            this.notificationElement[testTubeNumber].name = "name";
-            this.notificationElement[testTubeNumber].value = "value";
-            this.notificationElement[testTubeNumber].id = "id";
-
+            // this.notificationElement[testTubeNumber].name = "name";
+            // this.notificationElement[testTubeNumber].value = "value";
+            this.notificationElement[testTubeNumber].id = "checkbox" + (testTubeNumber).toString();
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
             this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap + 1)) + '%';
+            console.log(testTubeNumber)
             this.notificationElement[testTubeNumber].innerHTML = setNotificationArray[setNumber][testTubeNumber];
             this.notificationElement[testTubeNumber].style.zIndex = ([testTubeNumber] + 1).toString();
             this.notificationElement[testTubeNumber].classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.notificationElement[testTubeNumber].classList.remove("classPopupAnimTranslated");
+            //Checkbox clicked function
+            this.notificationElement[testTubeNumber].onclick = function () {
+                //put click and unclick logic here
+                globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] *= -1;
+            }
+
             // check & update set status
             this.setStatus[testTubeNumber] = true;
             if (this.setStatus[0] == true && this.setStatus[1] == true && this.setStatus[2] == true) {
-                nextButton.style.zIndex = "10";
-                nextButton.style.display = 'flex';
-                nextButton.classList.add("classPopupAnim");
+                //  submit button visible + pop up animations
+                submitInstructions.style.display = "flex";
+                submitInstructions.classList.add("classPopupAnimTranslated");
                 await sleep(500);
-                nextButton.classList.remove("classPopupAnim");
-                nextButton.classList.add("classOscillation");
+                submitInstructions.classList.remove("classPopupAnimTranslated");
+                await sleep(501);
+                submitInstructions.classList.add("classPopupAnimTranslatedVanish");
+                await sleep(500);
+                submitInstructions.classList.remove("classPopupAnimTranslatedVanish");
+                submitInstructions.style.display = "none";
+
+                //when submit is clicked make next visible and colour the checkbox
+                submitButton.style.zIndex = "10";
+                submitButton.style.display = 'flex';
+                submitButton.classList.add("classPopupAnim");
+                await sleep(500);
+                submitButton.classList.remove("classPopupAnim");
+                submitButton.classList.add("classOscillation");
             }
         }
+
+
 
         // primary notification box
         this.mainNotification = async function (setNumber) {
             // set number 
-            this.setNumberDiv = document.createElement('DIV');
-            elementsHolder.appendChild(this.setNumberDiv);
-            this.setNumberDiv.classList.add('setNumberDiv', 'alignTextCenter');
-            this.setNumberDiv.innerHTML = 'Set ' + setNumber;
-            this.setNumberDiv.style.zIndex = "11";
-            this.setNumberDiv.classList.add("classPopupAnim");
-            await sleep(500);
-            this.setNumberDiv.classList.remove("classPopupAnim");
+            // this.setNumberDiv = document.createElement('DIV');
+            // elementsHolder.appendChild(this.setNumberDiv);
+            // this.setNumberDiv.classList.add('setNumberDiv', 'alignTextCenter');
+            // this.setNumberDiv.innerHTML = 'Set ' + setNumber;
+            // this.setNumberDiv.style.zIndex = "11";
+            // this.setNumberDiv.classList.add("classPopupAnim");
+            // await sleep(500);
+            // this.setNumberDiv.classList.remove("classPopupAnim");
             // main notification 
             this.mainNotificationElement = document.createElement('DIV');
             elementsHolder.appendChild(this.mainNotificationElement);
@@ -152,7 +173,7 @@ class Set {
             this.mainNotificationElement.classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
-            await sleep(6000);
+            await sleep(501); //6000
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslatedVanish");
@@ -230,6 +251,39 @@ nextButton.onclick = function () {
         new finalPage();
     }
 }
+
+submitButton.onclick = function () {
+    submitButton.style.display = 'none';
+    nextButton.style.display = 'flex';
+    nextButton.style.zIndex = '15';
+    nextButton.classList.add("classOscillation");
+    //make notifications glow
+    // let checker = [0, 0, 0];
+    // checker = globalTestTubeNumberCheckedValue[setState - 1];
+    console.table(globalTestTubeNumberCheckedValue);
+    console.table(correctTicks);
+    // console.table()
+
+    for (let loopVar = 0; loopVar <= 2; loopVar++) {
+        if (correctTicks[setState - 1][loopVar] == globalTestTubeNumberCheckedValue[setState - 1][loopVar]) {
+            //make green
+            document.getElementById("checkbox" + (loopVar).toString()).style.setProperty("-webkit-filter", "drop-shadow(0 0 .2rem greenyellow)");
+            document.getElementById("checkbox" + (loopVar).toString()).style.accentColor = "greenyellow";
+        }
+        else {
+            document.getElementById("checkbox" + (loopVar).toString()).style.setProperty("-webkit-filter", "drop-shadow(0 0 .2rem crimson)");
+            document.getElementById("checkbox" + (loopVar).toString()).style.accentColor = "crimson";
+        }
+    }
+
+    // document.getElementById("checkbox1").style.setProperty("-webkit-filter", "drop-shadow(0 0 .1rem red)");
+
+    // document.getElementById("checkbox1").style.backgroundColour = 'red';
+    // document.getElementById("checkbox0").style.accentColor = "green";
+    // document.getElementById("checkbox1").checked = true;
+}
+
+
 
 document.getElementById('crossButton').onclick = function () {
     console.log('close');
