@@ -101,7 +101,7 @@ class Set {
                 this.reactionVideoElement[testTubeNumber].src = './assets/' + setVideosArray[setNumber][testTubeNumber];
                 this.reactionVideoElement[testTubeNumber].style.left = (testTubeLeft + (testTubeNumber * testTubeGap)) + '%';
             }
-            await sleep(501); //5000
+            await sleep(5000); //5000
             this.testTubeNotification(testTubeNumber);
         }
         // to show the checkbox after reaction
@@ -135,7 +135,7 @@ class Set {
                 submitInstructions.classList.add("classPopupAnimTranslated");
                 await sleep(500);
                 submitInstructions.classList.remove("classPopupAnimTranslated");
-                await sleep(501);
+                await sleep(5001);
                 submitInstructions.classList.add("classPopupAnimTranslatedVanish");
                 await sleep(500);
                 submitInstructions.classList.remove("classPopupAnimTranslatedVanish");
@@ -173,7 +173,7 @@ class Set {
             this.mainNotificationElement.classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
-            await sleep(501); //6000
+            await sleep(6000); //6000
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslatedVanish");
