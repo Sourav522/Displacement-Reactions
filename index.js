@@ -187,11 +187,11 @@ class Set {
 
 class finalPage {
     constructor() {
-        this.finalNotification = document.createElement('DIV');
-        elementsHolder.appendChild(this.finalNotification);
-        this.finalNotification.classList.add('finalNotification', 'alignTextCenter');
-        this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu.<br><br> A more reactive metal will replace a less reactive metal from its ionic salt solution.';
-        this.finalNotification.classList.add("classPopupAnimTranslated");
+        // this.finalNotification = document.createElement('DIV');
+        // elementsHolder.appendChild(this.finalNotification);
+        // this.finalNotification.classList.add('finalNotification', 'alignTextCenter');
+        // this.finalNotification.innerHTML = 'We have learnt that Mg is the most reactive and then comes Pb and the least reactive among the three metals is Cu.<br><br> A more reactive metal will replace a less reactive metal from its ionic salt solution.';
+        // this.finalNotification.classList.add("classPopupAnimTranslated");
 
         // this.playAgainButton = document.createElement('DIV');
         // elementsHolder.appendChild(this.playAgainButton);
@@ -211,6 +211,7 @@ class finalPage {
         elementsHolder.appendChild(this.finishButton);
         this.finishButton.classList.add('endButtons', 'alignTextCenter');
         this.finishButton.style.left = '50%';
+        this.finishButton.style.bottom = '40%';
         this.finishButton.innerHTML = 'FINISH';
         this.finishButton.classList.add("classPopupAnimTranslated");
         // this.finishButton.classList.add("classOscillationDelayed");
