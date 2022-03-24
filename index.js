@@ -287,7 +287,15 @@ nextButton.onclick = async function () {
     // let a = new set(setstate); // this doesnt create new object set. can be used to acces the inner varialbes and dom elements.
     //a.test.checkbox[0].style
     else {
-        new finalPage();
+        // new finalPage();
+        console.log('finish');
+            dsBridge.call("byjus.sendExploreUIEvent", {
+
+                tag: "finish",
+
+                data: ""
+
+            });
     }
 
     //test
