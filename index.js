@@ -116,7 +116,7 @@ class Set {
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
             this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap + 1)) + '%';
-            console.log(testTubeNumber)
+            // console.log(testTubeNumber)
             this.notificationElement[testTubeNumber].innerHTML = setNotificationArray[setNumber][testTubeNumber];
             this.notificationElement[testTubeNumber].style.zIndex = ([testTubeNumber] + 1).toString();
             this.notificationElement[testTubeNumber].classList.add("classPopupAnimTranslated");
@@ -133,6 +133,7 @@ class Set {
 
             //Checkbox clicked function
             this.notificationElement[testTubeNumber].onclick = function () {
+                // console.log(testTubeNumber);
                 //put click and unclick logic here
                 globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] *= -1;
             }
@@ -182,10 +183,8 @@ class Set {
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
             // await sleep(6000); //6000
-            let count = 0;
-            while (isStripClicked == 0 && count < 20) { //hide main notif element when the strip is clicked!
+            while (isStripClicked == 0) { //hide main notif element when the strip is clicked!
                 //wait for 6 seconds and remove
-                count++;
                 await sleep(300);
             }
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
@@ -269,6 +268,8 @@ nextButton.onclick = async function () {
     if (setState <= 3) {
         new Set(setState);
     }
+    // let a = new set(setstate); // this doesnt create new object set. can be used to acces the inner varialbes and dom elements.
+    //a.test.checkbox[0].style
     else {
         new finalPage();
     }
