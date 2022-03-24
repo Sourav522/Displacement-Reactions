@@ -120,6 +120,15 @@ class Set {
             this.notificationElement[testTubeNumber].classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.notificationElement[testTubeNumber].classList.remove("classPopupAnimTranslated");
+
+            // submit button visible with pop up animations
+            submitButton.style.zIndex = "10";
+            submitButton.style.display = 'flex';
+            submitButton.classList.add("classPopupAnim");
+            await sleep(500);
+            submitButton.classList.remove("classPopupAnim");
+            submitButton.classList.add("classOscillation");
+
             //Checkbox clicked function
             this.notificationElement[testTubeNumber].onclick = function () {
                 //put click and unclick logic here
@@ -129,7 +138,7 @@ class Set {
             // check & update set status
             this.setStatus[testTubeNumber] = true;
             if (this.setStatus[0] == true && this.setStatus[1] == true && this.setStatus[2] == true) {
-                //  submit button visible + pop up animations
+
                 submitInstructions.style.display = "flex";
                 submitInstructions.classList.add("classPopupAnimTranslated");
                 await sleep(500);
@@ -139,14 +148,6 @@ class Set {
                 await sleep(500);
                 submitInstructions.classList.remove("classPopupAnimTranslatedVanish");
                 submitInstructions.style.display = "none";
-
-                //when submit is clicked make next visible and colour the checkbox
-                submitButton.style.zIndex = "10";
-                submitButton.style.display = 'flex';
-                submitButton.classList.add("classPopupAnim");
-                await sleep(500);
-                submitButton.classList.remove("classPopupAnim");
-                submitButton.classList.add("classOscillation");
 
                 //Enable clicking of the checkbox elements
                 for (let loopVar = 0; loopVar <= 2; loopVar++) {
