@@ -278,6 +278,7 @@
     }
 }
 .classPopupAnimTranslated{
+    pointer-events: none;
     animation: popup2 0.5s cubic-bezier(1, 0.22, 0.38, 1.39) 1 forwards;
 }
 @keyframes popup2 {

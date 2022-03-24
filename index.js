@@ -109,10 +109,12 @@ class Set {
         // to show the checkbox after reaction
         this.testTubeNotification = async function (testTubeNumber) {
             //creating a checkbox
+
             this.notificationElement[testTubeNumber] = document.createElement('input');
             this.notificationElement[testTubeNumber].type = "checkbox";
             //Assigning ids for accesss outside the class
             this.notificationElement[testTubeNumber].id = "checkbox" + (testTubeNumber).toString();
+            // this.notificationElement[testTubeNumber].style.pointerEvents = "none";
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
             this.notificationElement[testTubeNumber].style.left = (reactionNotifLeft + (testTubeNumber * testTubeGap + 1)) + '%';
@@ -122,6 +124,8 @@ class Set {
             this.notificationElement[testTubeNumber].classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.notificationElement[testTubeNumber].classList.remove("classPopupAnimTranslated");
+            // await sleep(600);
+            // this.notificationElement[testTubeNumber].style.pointerEvents = "auto";
 
             // submit button visible with pop up animations
             submitButton.style.zIndex = "10";
@@ -132,10 +136,22 @@ class Set {
             submitButton.classList.add("classOscillation");
 
             //Checkbox clicked function
-            this.notificationElement[testTubeNumber].onclick = function () {
+            this.notificationElement[testTubeNumber].oninput = function () {
                 // console.log(testTubeNumber);
                 //put click and unclick logic here
-                globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] *= -1;
+                // globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] *= -1;
+                // console.log(`flipped to :  ${globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber]}`);
+                // console.log(`Value : ${document.getElementById("checkbox" + (testTubeNumber).toString()).checked}`);
+                if (this.checked) {
+                    globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] = 1;
+                    console.log(1);
+                }
+                else {
+                    globalTestTubeNumberCheckedValue[setNumber - 1][testTubeNumber] = -1;
+                    console.log(-1);
+                }
+
+
             }
 
             // check & update set status
@@ -273,8 +289,15 @@ nextButton.onclick = async function () {
     else {
         new finalPage();
     }
+
+    //test
+    // console.log(new set(setState));
+
+
+    // let domelelements;
     // for (let loopVar = 0; loopVar <= 2; loopVar++) {
-    //     document.getElementById("checkbox" + (loopVar).toString()).remove();
+    // domelelements = new set(setState).notificationElement[testTubeNumber].remove();
+    //     // document.getElementById("checkbox" + (loopVar).toString()).remove();
     // }
 }
 
@@ -286,8 +309,8 @@ submitButton.onclick = function () {
     //make notifications glow
     // let checker = [0, 0, 0];
     // checker = globalTestTubeNumberCheckedValue[setState - 1];
-    console.table(globalTestTubeNumberCheckedValue);
-    console.table(correctTicks);
+    // console.table(globalTestTubeNumberCheckedValue);
+    // console.table(correctTicks);
     // console.table()
 
     for (let loopVar = 0; loopVar <= 2; loopVar++) {
