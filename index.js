@@ -150,9 +150,9 @@ class Set {
                 submitInstructions.style.display = "none";
 
                 //Enable clicking of the checkbox elements
-                for (let loopVar = 0; loopVar <= 2; loopVar++) {
-                    document.getElementById("checkbox" + (loopVar).toString()).style.pointerEvents = "auto";
-                }
+                // for (let loopVar = 0; loopVar <= 2; loopVar++) {
+                //     document.getElementById("checkbox" + (loopVar).toString()).style.pointerEvents = "auto";
+                // }
 
             }
         }
@@ -257,6 +257,9 @@ nextButton.onclick = function () {
     else {
         new finalPage();
     }
+    // for (let loopVar = 0; loopVar <= 2; loopVar++) {
+    //     document.getElementById("checkbox" + (loopVar).toString()).remove();
+    // }
 }
 
 submitButton.onclick = function () {
@@ -283,6 +286,7 @@ submitButton.onclick = function () {
         }
         //disable clicking
         document.getElementById("checkbox" + (loopVar).toString()).style.pointerEvents = "none";
+
     }
 
     // document.getElementById("checkbox1").style.setProperty("-webkit-filter", "drop-shadow(0 0 .1rem red)");
