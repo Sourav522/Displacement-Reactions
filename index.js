@@ -271,7 +271,15 @@ nextButton.onclick = async function () {
     // let a = new set(setstate); // this doesnt create new object set. can be used to acces the inner varialbes and dom elements.
     //a.test.checkbox[0].style
     else {
-        new finalPage();
+        // new finalPage();
+        console.log('finish');
+            dsBridge.call("byjus.sendExploreUIEvent", {
+
+                tag: "finish",
+
+                data: ""
+
+            });
     }
     // for (let loopVar = 0; loopVar <= 2; loopVar++) {
     //     document.getElementById("checkbox" + (loopVar).toString()).remove();
@@ -286,8 +294,8 @@ submitButton.onclick = function () {
     //make notifications glow
     // let checker = [0, 0, 0];
     // checker = globalTestTubeNumberCheckedValue[setState - 1];
-    console.table(globalTestTubeNumberCheckedValue);
-    console.table(correctTicks);
+    // console.table(globalTestTubeNumberCheckedValue);
+    // console.table(correctTicks);
     // console.table()
 
     for (let loopVar = 0; loopVar <= 2; loopVar++) {
