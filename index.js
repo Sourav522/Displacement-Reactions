@@ -109,8 +109,7 @@ class Set {
             //creating a checkbox
             this.notificationElement[testTubeNumber] = document.createElement('input');
             this.notificationElement[testTubeNumber].type = "checkbox";
-            // this.notificationElement[testTubeNumber].name = "name";
-            // this.notificationElement[testTubeNumber].value = "value";
+            //Assigning ids for accesss outside the class
             this.notificationElement[testTubeNumber].id = "checkbox" + (testTubeNumber).toString();
             elementsHolder.appendChild(this.notificationElement[testTubeNumber]);
             this.notificationElement[testTubeNumber].classList.add('testTubeNotification', 'alignTextCenter');
@@ -148,6 +147,12 @@ class Set {
                 await sleep(500);
                 submitButton.classList.remove("classPopupAnim");
                 submitButton.classList.add("classOscillation");
+
+                //Enable clicking of the checkbox elements
+                for (let loopVar = 0; loopVar <= 2; loopVar++) {
+                    document.getElementById("checkbox" + (loopVar).toString()).style.pointerEvents = "auto";
+                }
+
             }
         }
 
@@ -275,6 +280,8 @@ submitButton.onclick = function () {
             document.getElementById("checkbox" + (loopVar).toString()).style.setProperty("-webkit-filter", "drop-shadow(0 0 .2rem crimson)");
             document.getElementById("checkbox" + (loopVar).toString()).style.accentColor = "crimson";
         }
+        //disable clicking
+        document.getElementById("checkbox" + (loopVar).toString()).style.pointerEvents = "none";
     }
 
     // document.getElementById("checkbox1").style.setProperty("-webkit-filter", "drop-shadow(0 0 .1rem red)");
