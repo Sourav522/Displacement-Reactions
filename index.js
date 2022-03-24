@@ -289,13 +289,13 @@ nextButton.onclick = async function () {
     else {
         // new finalPage();
         console.log('finish');
-            dsBridge.call("byjus.sendExploreUIEvent", {
+        dsBridge.call("byjus.sendExploreUIEvent", {
 
-                tag: "finish",
+            tag: "finish",
 
-                data: ""
+            data: ""
 
-            });
+        });
     }
 
     //test
@@ -322,6 +322,12 @@ submitButton.onclick = function () {
     // console.table()
 
     for (let loopVar = 0; loopVar <= 2; loopVar++) {
+        if (document.getElementById("checkbox" + (loopVar).toString()).checked) {
+            globalTestTubeNumberCheckedValue[setState - 1][loopVar] = 1;
+        }
+        else {
+            globalTestTubeNumberCheckedValue[setState - 1][loopVar] = -1;
+        }
         if (correctTicks[setState - 1][loopVar] == globalTestTubeNumberCheckedValue[setState - 1][loopVar]) {
             //make green
             document.getElementById("checkbox" + (loopVar).toString()).style.setProperty("-webkit-filter", "drop-shadow(0 0 .2rem greenyellow)");
