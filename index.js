@@ -251,7 +251,7 @@ window.onload = function () {
     // new finalPage();
     nextButton.style.display = 'none';
 }
-nextButton.onclick = function () {
+nextButton.onclick = async function () {
     nextButton.classList.remove("classOscillation");
     setState += 1;
     document.getElementById('elementsHolder').remove();
@@ -259,6 +259,13 @@ nextButton.onclick = function () {
     document.getElementsByClassName('first-div')[0].appendChild(elementsHolder);
     elementsHolder.setAttribute('id', 'elementsHolder');
     nextButton.style.display = 'none';
+
+    //hide submit instructions
+    submitInstructions.classList.add("classPopupAnimTranslatedVanish");
+    await sleep(500);
+    submitInstructions.classList.remove("classPopupAnimTranslatedVanish");
+    submitInstructions.style.display = "none";
+
     if (setState <= 3) {
         new Set(setState);
     }
