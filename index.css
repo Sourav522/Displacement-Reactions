@@ -87,21 +87,21 @@
 
     
 .setNumberDiv{
-    display: none!;
-    position: absolute;
+    display: none;
+    /* position: absolute;
     left:7%;
     bottom:5%;
     background: rgb(31, 31, 31);
     font-size: 0.8rem;
     border-radius: 0.1rem;
     color: rgb(167, 167, 167);
-    padding:0.2rem 0.4rem;
+    padding:0.2rem 0.4rem; */
     opacity: 0;
 }
 
 .mainNotification{
     position: absolute;
-    width: 42%;
+    width: 50%;
     left: 54%;
     transform: translateX(-50%);
     /* background-color: #fdf57bfd; */
@@ -110,7 +110,7 @@
     font-size: 0.7rem;
     border-radius: 0.3rem;
     color: rgb(255, 255, 255);
-    top:25%;
+    top:6%;
     text-align: center;
     padding: 0.2rem 0.5rem;
 }

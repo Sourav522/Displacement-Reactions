@@ -31,6 +31,7 @@ let StripLeft = 0;
 let reactionNotifLeft = 31.5;
 let globalTestTubeNumberCheckedValue = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
 let correctTicks = [[-1, 1, 1], [-1, -1, 1], [-1, -1, -1]];
+let isStripClicked = 0;
 class Set {
     constructor(setNumber) {
         // test tubes
@@ -87,6 +88,7 @@ class Set {
                 }
                 labSet.testTubes[j].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${j + 1}Start.jpg`;
                 labSet.playReactionAnimation(j);
+                isStripClicked = 1;
             }
         }
 
@@ -179,13 +181,19 @@ class Set {
             this.mainNotificationElement.classList.add("classPopupAnimTranslated");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslated");
-            await sleep(6000); //6000
+            // await sleep(6000); //6000
+            let count = 0;
+            while (isStripClicked == 0 && count < 20) { //hide main notif element when the strip is clicked!
+                //wait for 6 seconds and remove
+                count++;
+                await sleep(300);
+            }
             this.mainNotificationElement.classList.add("classPopupAnimTranslatedVanish");
             await sleep(500);
             this.mainNotificationElement.classList.remove("classPopupAnimTranslatedVanish");
             this.mainNotificationElement.style.display = "none";
-
             this.mainNotificationElement.remove();
+            isStripClicked = 0;
         }
         this.mainNotification(setNumber);
     }
