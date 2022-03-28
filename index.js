@@ -30,7 +30,7 @@ let testTubeGap = 21;
 let StripLeft = 0;
 let reactionNotifLeft = 31.5;
 let globalTestTubeNumberCheckedValue = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
-let correctTicks = [[-1, 1, 1], [-1, -1, 1], [-1, -1, -1]];
+let correctTicks = [[-1, 1, 1], [-1, -1, 1], [1, 1, 1]];
 let isStripClicked = 0;
 class Set {
     constructor(setNumber) {
@@ -157,7 +157,13 @@ class Set {
             // check & update set status
             this.setStatus[testTubeNumber] = true;
             if (this.setStatus[0] == true && this.setStatus[1] == true && this.setStatus[2] == true) {
-
+                if (setNumber == 3) {
+                    //Cu Test tube
+                    submitInstructions.innerText = "Check the boxes for the test tubes, where you DID NOT OBSERVE any change"
+                }
+                // else{
+                //     Check the boxes for the test tubes, where you observed a change and submit
+                // }
                 submitInstructions.style.display = "flex";
                 submitInstructions.classList.add("classPopupAnimTranslated");
                 await sleep(500);
