@@ -159,7 +159,7 @@ class Set {
             if (this.setStatus[0] == true && this.setStatus[1] == true && this.setStatus[2] == true) {
                 if (setNumber == 3) {
                     //Cu Test tube
-                    submitInstructions.innerText = "Check the boxes for the test tubes, where you DID NOT OBSERVE any change"
+                    submitInstructions.innerText = "Choose the test tube where the metal strip has not displaced metal from its salt solution";
                 }
                 // else{
                 //     Check the boxes for the test tubes, where you observed a change and submit
