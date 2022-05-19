@@ -53,7 +53,6 @@ class Set {
             this.testTubes[i].classList.add('testTube');
             this.testTubes[i].src = `./assets/GIFs/Set${setNumber}/StartPics/s${setNumber}g${i + 1}Start.jpg`;
             this.testTubes[i].style.left = (testTubeLeft + (i * testTubeGap)) + '%';
-
         }
         for (i = setNumber - 1; i < 3; i++) {
             // strips_captions
